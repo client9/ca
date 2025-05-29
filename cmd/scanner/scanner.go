@@ -5,6 +5,7 @@ import (
 	"math/bits"
 
 	"github.com/client9/ca"
+	"github.com/client9/randcheck"
 )
 
 func Scanner() []uint32 {
@@ -15,13 +16,13 @@ func Scanner() []uint32 {
 	cycles3 := 64 * cycles2
 
 	/*
-		var ruleInst CA3
+		var ruleInst ca.CA3
 		onesNeeded := 4
 		rulesMin := uint32(0x00)
 		rulesMax := uint32(0xFF)
 		mask := uint32(0x81)
 	*/
-	var ruleInst CA5
+	var ruleInst ca.CA5
 	onesNeeded := 16
 	rulesMin := uint32(0x0100FFFF)
 	rulesMax := uint32(0xFFFFFFFF)
@@ -62,7 +63,7 @@ func Scanner() []uint32 {
 			randbit = append(randbit, ca.CenterCell(c))
 		}
 
-		if err := checkRandom(randbit); err != nil {
+		if err := randcheck.RunAll(randbit); err != nil {
 			//fmt.Printf("Rule %d - %v\n", rule, err)
 			continue
 		}
@@ -72,7 +73,7 @@ func Scanner() []uint32 {
 
 			randbit = append(randbit, ca.CenterCell(c))
 		}
-		if err := checkRandom(randbit); err != nil {
+		if err := randcheck.RunAll(randbit); err != nil {
 			//fmt.Printf("[2] Rule %d passed at %d but at %d - %v\n", rule, cycles1, cycles2, err)
 			continue
 		}
@@ -82,7 +83,7 @@ func Scanner() []uint32 {
 
 			randbit = append(randbit, ca.CenterCell(c))
 		}
-		if err := checkRandom(randbit); err != nil {
+		if err := randcheck.RunAll(randbit); err != nil {
 			fmt.Printf("[3] Rule %d passed at %d but at %d - %v\n", rule, cycles1, cycles3, err)
 			continue
 		}
@@ -97,7 +98,7 @@ func Scanner() []uint32 {
 	return found
 }
 
-func printSample(r CARule) {
+func printSample(r ca.CARule) {
 	fmt.Printf("\n\n===== RULE %d [ %s ] ================\n\n", r.Int(), r.String())
 	fmt.Println(r.Diagram())
 	fmt.Printf("Mirror is %d\n", r.Mirror().Int())
@@ -106,11 +107,11 @@ func printSample(r CARule) {
 		cycles := 100
 		c := ca.NewSingle(64 * 2)
 		next := ca.New(64 * 2)
-		fmt.Println(ToString(c))
+		fmt.Println(ca.ToString(c))
 		for i := 0; i < cycles; i++ {
 			r.Step(c, next)
 			c, next = next, c
-			fmt.Println(ToString(c))
+			fmt.Println(ca.ToString(c))
 		}
 	}
 }

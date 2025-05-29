@@ -1,0 +1,8 @@
+github.com/client9/randcheck v0.0.0-20250528172615-9d7f942e1106 h1:sSKWfH0gND4hCLco4WRQxSLClKVyaeqHeY2k14n7UvE=
+github.com/client9/randcheck v0.0.0-20250528172615-9d7f942e1106/go.mod h1:nC75/AYPZ5xQ9mYv+Q48qKD0I0JC4nDDLtyiTacp/Ic=
+github.com/client9/randcheck v0.0.0-20250529051435-d00df447619a h1:phsnK2cM/kjp8iGK5qyqO0msAaY4q4OzsM9i+L0hJ78=
+github.com/client9/randcheck v0.0.0-20250529051435-d00df447619a/go.mod h1:nC75/AYPZ5xQ9mYv+Q48qKD0I0JC4nDDLtyiTacp/Ic=
+golang.org/x/exp v0.0.0-20250506013437-ce4c2cf36ca6 h1:y5zboxd6LQAqYIhHnB48p0ByQ/GnQx2BE33L8BOHQkI=
+golang.org/x/exp v0.0.0-20250506013437-ce4c2cf36ca6/go.mod h1:U6Lno4MTRCDY+Ba7aCcauB9T60gsv5s4ralQzP72ZoQ=
+gonum.org/v1/gonum v0.16.0 h1:5+ul4Swaf3ESvrOnidPp4GZbzf0mxVQpDCYUQE7OJfk=
+gonum.org/v1/gonum v0.16.0/go.mod h1:fef3am4MQ93R2HHpKnLk4/Tbh/s0+wqD5nfa6Pnwy4E=

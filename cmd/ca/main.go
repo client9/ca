@@ -24,7 +24,7 @@ func main() {
 	}
 
 	if *reverseFlag == true {
-		r = r.Reverse().(CA5)
+		r = r.Reverse().(ca.CA5)
 	}
 	fmt.Printf("\n\n===== RULE %d [ %s ] ================\n\n", r.Int(), r.String())
 	fmt.Println(r.Diagram())
@@ -32,10 +32,10 @@ func main() {
 
 	c := ca.NewSingle(*cFlag)
 	next := ca.New(*cFlag)
-	fmt.Println(ToString(c))
+	fmt.Println(ca.ToString(c))
 	for i := 0; i < *sFlag; i++ {
 		r.Step(c, next)
 		c, next = next, c
-		fmt.Println(ToString(c))
+		fmt.Println(ca.ToString(c))
 	}
 }
