@@ -169,7 +169,7 @@ func (r CA5) cell(a, b, c, d, e int) int {
 
 func absmod(i, n int) int {
 	if i < 0 {
-		return n+i
+		return n + i
 	}
 	return i
 }
@@ -219,4 +219,34 @@ func ruleToBString(r uint32, n int) string {
 		j++
 	}
 	return string(buf)
+}
+
+func ToRule3(fn func(a, b, c int) int) uint32 {
+	var r uint32
+
+	for i := 7; i >= 0; i-- {
+		a := (i >> 2) & 1
+		b := (i >> 1) & 1
+		c := i & 1
+		r = r << 1
+		r = r | uint32(fn(a, b, c))
+
+	}
+	return r
+}
+
+func ToRule5(fn func(a, b, c, d, e int) int) uint32 {
+	var r uint32
+
+	for i := 31; i >= 0; i-- {
+		a := (i >> 4) & 1
+		b := (i >> 3) & 1
+		c := (i >> 2) & 1
+		d := (i >> 1) & 1
+		e := i & 1
+		r = r << 1
+		r = r | uint32(fn(a, b, c, d, e))
+
+	}
+	return r
 }
