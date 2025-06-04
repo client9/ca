@@ -171,12 +171,12 @@ func absmod(i, n int) int {
 	if i < 0 {
 		return n + i
 	}
-	return i
+	return i % n
 }
 
 func (r CA5) Step(c, next cavec) {
 
-	if true {
+	if false {
 		last := len(c) - 1
 		next[0] = r.cell(c[last-1], c[last], c[0], c[1], c[2])
 		next[1] = r.cell(c[last], c[0], c[1], c[2], c[3])
@@ -186,9 +186,10 @@ func (r CA5) Step(c, next cavec) {
 			next[i] = r.cell(c[i-2], c[i-1], c[i], c[i+1], c[i+2])
 		}
 	} else {
+		step := 5
 		n := len(c)
 		for i := 0; i < n; i++ {
-			next[i] = r.cell(c[absmod(i-11, n)], c[(i+3)%n], c[i], c[absmod(i-5, n)], c[(i+7)%n])
+			next[i] = r.cell(c[absmod(i-2*step-1, n)], c[absmod(i-step, n)], c[i], c[absmod(i+step, n)], c[absmod(i+2*step+1, n)])
 		}
 	}
 }

@@ -17,24 +17,29 @@ func Slice(v []uint64) []uint64 {
 	for i, val := range v {
 		for j := 0; j < width; j++ {
 			/*
-						pos = i * width + j --> NORMAL
-				        pos = j * m + i
-				(3 x 64)
-				a0 a1 a2(0,2) a3 ... a63
-				b0 b1 b2(1,2) b3 ... b63
-
-				( 64 x 3 )
-				a0 b0 c0
-				a1 b1 c1
-				a2 b2 c2
-
-				a0 a3 a6 a9 a12
-				a1 a4 a7 a10 a13
-				a2 a5
 
 
-				bucket = pos % 3
-				bit = pos - bucket
+				a0
+				a3
+				a
+							pos = i * width + j --> NORMAL
+					        pos = j * m + i
+					(3 x 64)
+					a0 a1 a2(0,2) a3 ... a63
+					b0 b1 b2(1,2) b3 ... b63
+
+					( 64 x 3 )
+					a0 b0 c0
+					a1 b1 c1
+					a2 b2 c2
+
+					a0 a3 a6 a9 a12
+					a1 a4 a7 a10 a13
+					a2 a5
+
+
+					bucket = pos % 3
+					bit = pos - bucket
 			*/
 			if val&0x01 == 1 {
 				// normal position is
